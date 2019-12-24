@@ -1,5 +1,8 @@
 package org.mariuszf.dnd5e.characters.backend.domain;
 
+import org.mariuszf.dnd5e.characters.backend.domain.races.Race;
+import org.mariuszf.dnd5e.characters.backend.domain.races.SubRace;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,8 +17,13 @@ public class PlayerCharacter {
 
     @Column(nullable = false)
     private String name;
-//    private String race;
-//    private String alignment;
+
+    @Column
+    private Race race;
+
+    @Column
+    private SubRace subRace;
+
 
     @Column(nullable = false)
     private Integer strength;

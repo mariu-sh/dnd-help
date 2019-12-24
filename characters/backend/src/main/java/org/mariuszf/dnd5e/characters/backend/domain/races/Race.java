@@ -2,24 +2,27 @@ package org.mariuszf.dnd5e.characters.backend.domain.races;
 
 import org.mariuszf.dnd5e.characters.backend.domain.PlayerCharacter;
 
+import java.util.List;
 import java.util.function.Function;
 
-enum Race {
-    DWARF(Race::addDwarfStats),
-    ELF(Race::addElfStats),
-    HALFLING(Race::addHalflingStats),
-    HUMAN(Race::addHumanStats),
-//  VARIANTHUMAN(Race::addVariantHumanStats), skills of choice
-    DRAGONBORN(Race::addDragonbornStats),
-    GNOME(Race::addGnomeStats),
-//    HALFELF(Race::addHalfELFStats),, skills of choice
-    HALFORC(Race::addHalfOrcStats),
-    TIEFLING(Race::addTieflingStats);
+public enum Race {
+    DWARF(Race::addDwarfStats, SubRace.getDwarfSubRaces()),
+    ELF(Race::addElfStats, SubRace.getElfSubRaces()),
+    HALFLING(Race::addHalflingStats, SubRace.getHalflingSubRaces()),
+    HUMAN(Race::addHumanStats, SubRace.getHumanSubRaces()),
+//  VARIANTHUMAN(Race::addVariantHumanStats, SubRace.getHumanSubRaces()), skills of choice
+//  DRAGONBORN(Race::addDragonbornStats), DragonAncestry ?? not a subrace??
+    GNOME(Race::addGnomeStats, SubRace.getGnomeSubRaces()),
+//    HALFELF(Race::addHalfELFStats, SubRace.getHalfElfSubRaces()), skills of choice
+    HALFORC(Race::addHalfOrcStats, SubRace.getHalfOrcSubRaces()),
+    TIEFLING(Race::addTieflingStats, SubRace.getTieflingSubRaces());
 
     private final Function<PlayerCharacter, PlayerCharacter> statsUpdater;
+    private final List<SubRace> availableSubRaces;
 
-    Race(Function<PlayerCharacter, PlayerCharacter> statsUpdater) {
+    Race(Function<PlayerCharacter, PlayerCharacter> statsUpdater, List<SubRace> availableSubRaces) {
         this.statsUpdater = statsUpdater;
+        this.availableSubRaces = availableSubRaces;
     }
 
     public PlayerCharacter updateRacialStats(PlayerCharacter playerCharacter){

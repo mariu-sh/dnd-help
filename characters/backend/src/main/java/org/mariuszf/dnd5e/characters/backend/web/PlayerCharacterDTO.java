@@ -14,9 +14,13 @@ public class PlayerCharacterDTO {
     private Integer wisdom;
     private Integer charisma;
 
-    public PlayerCharacterDTO(Long id, String name, Integer strength, Integer dexterity, Integer constitution, Integer intelligence, Integer wisdom, Integer charisma) {
+    public PlayerCharacterDTO(Long id, String name) {
         this.id = id;
         this.name = name;
+    }
+
+    public PlayerCharacterDTO(Long id, String name, Integer strength, Integer dexterity, Integer constitution, Integer intelligence, Integer wisdom, Integer charisma){
+        this(id, name);
         this.strength = strength;
         this.dexterity = dexterity;
         this.constitution = constitution;
