@@ -2,9 +2,6 @@ package org.mariuszf.dnd5e.characters.backend.domain.races;
 
 import org.mariuszf.dnd5e.characters.backend.domain.PlayerCharacter;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.function.Function;
 
 public enum SubRace {
@@ -19,9 +16,11 @@ public enum SubRace {
     FORESTGNOME(SubRace::addForestGnomeStats),
     ROCKGNOME(SubRace::addRockGnomeStats);
 
+    private final String subRaceName;
     private final Function<PlayerCharacter, PlayerCharacter> statsUpdater;
 
     SubRace(Function<PlayerCharacter, PlayerCharacter> statsUpdater) {
+        this.subRaceName = this.name().toLowerCase();
         this.statsUpdater = statsUpdater;
     }
 
@@ -74,35 +73,7 @@ public enum SubRace {
         return playerCharacter;
     }
 
-    public static List<SubRace> getDwarfSubRaces(){
-        return Arrays.asList(HILLDWARF, MOUNTAINDWARF);
-    }
-
-    public static List<SubRace> getElfSubRaces() {
-        return Arrays.asList(HIGHELF, WOODELF, DROW);
-    }
-
-    public static List<SubRace> getHalflingSubRaces(){
-        return Arrays.asList(LIGHTFOOT, STOUT);
-    }
-
-    public static List<SubRace> getHumanSubRaces(){
-        return Collections.emptyList();
-    }
-
-    public static List<SubRace> getHalfElfSubRaces() {
-        return Collections.emptyList();
-    }
-
-    public static List<SubRace> getHalfOrcSubRaces() {
-        return Collections.emptyList();
-    }
-
-    public static List<SubRace> getGnomeSubRaces(){
-        return Arrays.asList(FORESTGNOME, ROCKGNOME);
-    }
-
-    public static List<SubRace> getTieflingSubRaces() {
-        return Collections.emptyList();
+    public String getSubRaceName() {
+        return subRaceName;
     }
 }

@@ -20,10 +20,8 @@ public class PlayerCharacter {
 
     @Column
     private Race race;
-
     @Column
     private SubRace subRace;
-
 
     @Column(nullable = false)
     private Integer strength;

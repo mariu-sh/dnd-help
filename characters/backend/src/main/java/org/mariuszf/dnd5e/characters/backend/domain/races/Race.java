@@ -6,23 +6,25 @@ import java.util.List;
 import java.util.function.Function;
 
 public enum Race {
-    DWARF(Race::addDwarfStats, SubRace.getDwarfSubRaces()),
-    ELF(Race::addElfStats, SubRace.getElfSubRaces()),
-    HALFLING(Race::addHalflingStats, SubRace.getHalflingSubRaces()),
-    HUMAN(Race::addHumanStats, SubRace.getHumanSubRaces()),
-//  VARIANTHUMAN(Race::addVariantHumanStats, SubRace.getHumanSubRaces()), skills of choice
-//  DRAGONBORN(Race::addDragonbornStats), DragonAncestry ?? not a subrace??
-    GNOME(Race::addGnomeStats, SubRace.getGnomeSubRaces()),
-//    HALFELF(Race::addHalfELFStats, SubRace.getHalfElfSubRaces()), skills of choice
-    HALFORC(Race::addHalfOrcStats, SubRace.getHalfOrcSubRaces()),
-    TIEFLING(Race::addTieflingStats, SubRace.getTieflingSubRaces());
+    DWARF(Race::addDwarfStats, List.of(SubRace.HILLDWARF, SubRace.MOUNTAINDWARF)),
+    ELF(Race::addElfStats, List.of(SubRace.HIGHELF, SubRace.WOODELF, SubRace.DROW)),
+    HALFLING(Race::addHalflingStats, List.of(SubRace.LIGHTFOOT, SubRace.STOUT)),
+    HUMAN(Race::addHumanStats, List.of()),
+//    VARIANTHUMAN(Race::addVariantHumanStats), //skills of choice
+    DRAGONBORN(Race::addDragonbornStats, List.of()), //DragonAncestry ?? not a subrace??
+    GNOME(Race::addGnomeStats, List.of(SubRace.FORESTGNOME, SubRace.ROCKGNOME)),
+//    HALFELF(Race::addHalfELFStats), //skills of choice
+    HALFORC(Race::addHalfOrcStats, List.of()),
+    TIEFLING(Race::addTieflingStats, List.of());
 
+    private final String raceName;
+    private final List<SubRace> subRaces;
     private final Function<PlayerCharacter, PlayerCharacter> statsUpdater;
-    private final List<SubRace> availableSubRaces;
 
-    Race(Function<PlayerCharacter, PlayerCharacter> statsUpdater, List<SubRace> availableSubRaces) {
+    Race(Function<PlayerCharacter, PlayerCharacter> statsUpdater, List<SubRace> subRaces) {
+        this.raceName = this.name().toLowerCase();
+        this.subRaces = subRaces;
         this.statsUpdater = statsUpdater;
-        this.availableSubRaces = availableSubRaces;
     }
 
     public PlayerCharacter updateRacialStats(PlayerCharacter playerCharacter){
@@ -75,5 +77,9 @@ public enum Race {
         playerCharacter.addIntelligence(1);
         playerCharacter.addCharisma(2);
         return playerCharacter;
+    }
+
+    public String getRaceName() {
+        return raceName;
     }
 }
