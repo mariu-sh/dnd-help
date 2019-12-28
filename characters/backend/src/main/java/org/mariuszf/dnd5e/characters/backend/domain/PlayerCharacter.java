@@ -36,15 +36,7 @@ public class PlayerCharacter {
     @Column(nullable = false)
     private Integer charisma;
 
-    public PlayerCharacter(Long id, String name, Integer strength, Integer dexterity, Integer constitution, Integer intelligence, Integer wisdom, Integer charisma) {
-        this.id = id;
-        this.name = name;
-        this.strength = strength;
-        this.dexterity = dexterity;
-        this.constitution = constitution;
-        this.intelligence = intelligence;
-        this.wisdom = wisdom;
-        this.charisma = charisma;
+    public PlayerCharacter(){
     }
 
     public void addStrength(Integer strength) {

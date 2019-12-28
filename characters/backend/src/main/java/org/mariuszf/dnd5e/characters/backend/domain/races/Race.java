@@ -6,15 +6,15 @@ import java.util.List;
 import java.util.function.Function;
 
 public enum Race {
-    DWARF(Race::addDwarfStats, List.of(SubRace.HILLDWARF, SubRace.MOUNTAINDWARF)),
-    ELF(Race::addElfStats, List.of(SubRace.HIGHELF, SubRace.WOODELF, SubRace.DROW)),
+    DWARF(Race::addDwarfStats, List.of(SubRace.HILL_DWARF, SubRace.MOUNTAIN_DWARF)),
+    ELF(Race::addElfStats, List.of(SubRace.HIGH_ELF, SubRace.WOOD_ELF, SubRace.DROW)),
     HALFLING(Race::addHalflingStats, List.of(SubRace.LIGHTFOOT, SubRace.STOUT)),
     HUMAN(Race::addHumanStats, List.of()),
 //    VARIANTHUMAN(Race::addVariantHumanStats), //skills of choice
     DRAGONBORN(Race::addDragonbornStats, List.of()), //DragonAncestry ?? not a subrace??
-    GNOME(Race::addGnomeStats, List.of(SubRace.FORESTGNOME, SubRace.ROCKGNOME)),
+    GNOME(Race::addGnomeStats, List.of(SubRace.FOREST_GNOME, SubRace.ROCK_GNOME)),
 //    HALFELF(Race::addHalfELFStats), //skills of choice
-    HALFORC(Race::addHalfOrcStats, List.of()),
+    HALF_ORC(Race::addHalfOrcStats, List.of()),
     TIEFLING(Race::addTieflingStats, List.of());
 
     private final String raceName;
@@ -81,5 +81,9 @@ public enum Race {
 
     public String getRaceName() {
         return raceName;
+    }
+
+    public List<SubRace> getSubRaces() {
+        return subRaces;
     }
 }

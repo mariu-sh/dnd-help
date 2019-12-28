@@ -1,20 +1,21 @@
 package org.mariuszf.dnd5e.characters.backend.domain.races;
 
 import org.mariuszf.dnd5e.characters.backend.domain.PlayerCharacter;
+import org.mariuszf.dnd5e.characters.backend.web.SubRaceDTO;
 
 import java.util.function.Function;
 
 public enum SubRace {
 
-    HILLDWARF(SubRace::addHillDwarfStats),
-    MOUNTAINDWARF(SubRace::addMountainDwarfStats),
-    HIGHELF(SubRace::addHighElfStats),
-    WOODELF(SubRace::addWoodElfStats),
+    HILL_DWARF(SubRace::addHillDwarfStats),
+    MOUNTAIN_DWARF(SubRace::addMountainDwarfStats),
+    HIGH_ELF(SubRace::addHighElfStats),
+    WOOD_ELF(SubRace::addWoodElfStats),
     DROW(SubRace::addDrowStats),
     LIGHTFOOT(SubRace::addLightFootStats),
     STOUT(SubRace::addStoutStats),
-    FORESTGNOME(SubRace::addForestGnomeStats),
-    ROCKGNOME(SubRace::addRockGnomeStats);
+    FOREST_GNOME(SubRace::addForestGnomeStats),
+    ROCK_GNOME(SubRace::addRockGnomeStats);
 
     private final String subRaceName;
     private final Function<PlayerCharacter, PlayerCharacter> statsUpdater;
@@ -75,5 +76,9 @@ public enum SubRace {
 
     public String getSubRaceName() {
         return subRaceName;
+    }
+
+    public SubRaceDTO toDto(){
+        return new SubRaceDTO(this.getSubRaceName());
     }
 }
