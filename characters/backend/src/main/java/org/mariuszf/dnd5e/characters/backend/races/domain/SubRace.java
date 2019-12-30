@@ -17,11 +17,11 @@ public enum SubRace {
     FOREST_GNOME(SubRace::addForestGnomeStats),
     ROCK_GNOME(SubRace::addRockGnomeStats);
 
-    private final String subRaceName;
+    private final String name;
     private final Function<PlayerCharacter, PlayerCharacter> statsUpdater;
 
     SubRace(Function<PlayerCharacter, PlayerCharacter> statsUpdater) {
-        this.subRaceName = this.name().toLowerCase();
+        this.name = this.name().toLowerCase().replace("_","-");
         this.statsUpdater = statsUpdater;
     }
 
@@ -74,11 +74,11 @@ public enum SubRace {
         return playerCharacter;
     }
 
-    public String getSubRaceName() {
-        return subRaceName;
+    public String getName() {
+        return name;
     }
 
     public SubRaceDTO toDto(){
-        return new SubRaceDTO(this.getSubRaceName());
+        return new SubRaceDTO(this.getName());
     }
 }

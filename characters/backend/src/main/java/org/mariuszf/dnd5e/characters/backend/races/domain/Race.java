@@ -1,9 +1,11 @@
 package org.mariuszf.dnd5e.characters.backend.races.domain;
 
 import org.mariuszf.dnd5e.characters.backend.playercharacter.domain.PlayerCharacter;
+import org.mariuszf.dnd5e.characters.backend.races.web.RaceDTO;
 
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public enum Race {
     DWARF(Race::addDwarfStats, List.of(SubRace.HILL_DWARF, SubRace.MOUNTAIN_DWARF)),
@@ -22,7 +24,7 @@ public enum Race {
     private final Function<PlayerCharacter, PlayerCharacter> statsUpdater;
 
     Race(Function<PlayerCharacter, PlayerCharacter> statsUpdater, List<SubRace> subRaces) {
-        this.raceName = this.name().toLowerCase();
+        this.raceName = this.name().toLowerCase().replace("_","-");
         this.subRaces = subRaces;
         this.statsUpdater = statsUpdater;
     }
@@ -77,6 +79,14 @@ public enum Race {
         playerCharacter.addIntelligence(1);
         playerCharacter.addCharisma(2);
         return playerCharacter;
+    }
+
+    public RaceDTO toDto(){
+        return new RaceDTO(raceName,
+                subRaces.stream()
+                        .map(SubRace::toDto)
+                        .collect(Collectors.toList())
+        );
     }
 
     public String getRaceName() {
