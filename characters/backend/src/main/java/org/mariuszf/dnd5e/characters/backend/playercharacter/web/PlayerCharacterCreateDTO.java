@@ -1,4 +1,4 @@
-package org.mariuszf.dnd5e.characters.backend.web;
+package org.mariuszf.dnd5e.characters.backend.playercharacter.web;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;

@@ -1,7 +1,7 @@
-package org.mariuszf.dnd5e.characters.backend.domain.races;
+package org.mariuszf.dnd5e.characters.backend.races.domain;
 
-import org.mariuszf.dnd5e.characters.backend.domain.PlayerCharacter;
-import org.mariuszf.dnd5e.characters.backend.web.SubRaceDTO;
+import org.mariuszf.dnd5e.characters.backend.playercharacter.domain.PlayerCharacter;
+import org.mariuszf.dnd5e.characters.backend.races.web.SubRaceDTO;
 
 import java.util.function.Function;
 

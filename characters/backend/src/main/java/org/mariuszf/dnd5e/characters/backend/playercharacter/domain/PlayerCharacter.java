@@ -1,7 +1,7 @@
-package org.mariuszf.dnd5e.characters.backend.domain;
+package org.mariuszf.dnd5e.characters.backend.playercharacter.domain;
 
-import org.mariuszf.dnd5e.characters.backend.domain.races.Race;
-import org.mariuszf.dnd5e.characters.backend.domain.races.SubRace;
+import org.mariuszf.dnd5e.characters.backend.races.domain.Race;
+import org.mariuszf.dnd5e.characters.backend.races.domain.SubRace;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,17 +23,17 @@ public class PlayerCharacter {
     @Column
     private SubRace subRace;
 
-    @Column(nullable = false)
+    @Column
     private Integer strength;
-    @Column(nullable = false)
+    @Column
     private Integer dexterity;
     @Column(nullable = false)
     private Integer constitution;
-    @Column(nullable = false)
+    @Column
     private Integer intelligence;
-    @Column(nullable = false)
+    @Column
     private Integer wisdom;
-    @Column(nullable = false)
+    @Column
     private Integer charisma;
 
     public PlayerCharacter(){

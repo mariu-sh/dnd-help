@@ -1,4 +1,4 @@
-package org.mariuszf.dnd5e.characters.backend.domain.races;
+package org.mariuszf.dnd5e.characters.backend.races.web.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

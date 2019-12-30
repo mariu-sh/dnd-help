@@ -1,6 +1,6 @@
-package org.mariuszf.dnd5e.characters.backend.database;
+package org.mariuszf.dnd5e.characters.backend.playercharacter.database;
 
-import org.mariuszf.dnd5e.characters.backend.domain.PlayerCharacter;
+import org.mariuszf.dnd5e.characters.backend.playercharacter.domain.PlayerCharacter;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

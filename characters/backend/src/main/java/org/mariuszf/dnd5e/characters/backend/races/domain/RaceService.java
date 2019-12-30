@@ -1,6 +1,7 @@
-package org.mariuszf.dnd5e.characters.backend.domain.races;
+package org.mariuszf.dnd5e.characters.backend.races.domain;
 
-import org.mariuszf.dnd5e.characters.backend.web.SubRaceDTO;
+import org.mariuszf.dnd5e.characters.backend.races.web.SubRaceDTO;
+import org.mariuszf.dnd5e.characters.backend.races.web.exceptions.RaceDoesNotExistException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

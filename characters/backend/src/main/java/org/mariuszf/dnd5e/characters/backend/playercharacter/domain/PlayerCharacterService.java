@@ -1,6 +1,6 @@
-package org.mariuszf.dnd5e.characters.backend.domain;
+package org.mariuszf.dnd5e.characters.backend.playercharacter.domain;
 
-import org.mariuszf.dnd5e.characters.backend.database.PlayerCharacterRepo;
+import org.mariuszf.dnd5e.characters.backend.playercharacter.database.PlayerCharacterRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

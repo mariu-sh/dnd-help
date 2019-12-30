@@ -1,4 +1,4 @@
-package org.mariuszf.dnd5e.characters.backend.web;
+package org.mariuszf.dnd5e.characters.backend.races.web;
 
 public class SubRaceDTO {
 
