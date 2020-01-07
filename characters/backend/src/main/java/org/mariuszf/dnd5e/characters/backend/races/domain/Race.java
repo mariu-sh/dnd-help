@@ -1,30 +1,26 @@
 package org.mariuszf.dnd5e.characters.backend.races.domain;
 
 import org.mariuszf.dnd5e.characters.backend.playercharacter.domain.PlayerCharacter;
-import org.mariuszf.dnd5e.characters.backend.races.web.RaceDTO;
 
 import java.util.List;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public enum Race {
     DWARF(Race::addDwarfStats, List.of(SubRace.HILL_DWARF, SubRace.MOUNTAIN_DWARF)),
     ELF(Race::addElfStats, List.of(SubRace.HIGH_ELF, SubRace.WOOD_ELF, SubRace.DROW)),
     HALFLING(Race::addHalflingStats, List.of(SubRace.LIGHTFOOT, SubRace.STOUT)),
     HUMAN(Race::addHumanStats, List.of()),
-//    VARIANTHUMAN(Race::addVariantHumanStats), //skills of choice
+//    VARIANT_HUMAN(Race::addVariantHumanStats), //skills of choice
     DRAGONBORN(Race::addDragonbornStats, List.of()), //DragonAncestry ?? not a subrace??
     GNOME(Race::addGnomeStats, List.of(SubRace.FOREST_GNOME, SubRace.ROCK_GNOME)),
-//    HALFELF(Race::addHalfELFStats), //skills of choice
+//    HALF_ELF(Race::addHalfELFStats), //skills of choice
     HALF_ORC(Race::addHalfOrcStats, List.of()),
     TIEFLING(Race::addTieflingStats, List.of());
 
-    private final String raceName;
     private final List<SubRace> subRaces;
     private final Function<PlayerCharacter, PlayerCharacter> statsUpdater;
 
     Race(Function<PlayerCharacter, PlayerCharacter> statsUpdater, List<SubRace> subRaces) {
-        this.raceName = this.name().toLowerCase().replace("_","-");
         this.subRaces = subRaces;
         this.statsUpdater = statsUpdater;
     }
@@ -79,18 +75,6 @@ public enum Race {
         playerCharacter.addIntelligence(1);
         playerCharacter.addCharisma(2);
         return playerCharacter;
-    }
-
-    public RaceDTO toDto(){
-        return new RaceDTO(raceName,
-                subRaces.stream()
-                        .map(SubRace::toDto)
-                        .collect(Collectors.toList())
-        );
-    }
-
-    public String getRaceName() {
-        return raceName;
     }
 
     public List<SubRace> getSubRaces() {

@@ -23,20 +23,26 @@ public class PlayerCharacter {
     @Column
     private SubRace subRace;
 
-    @Column
+    @Column(nullable = false)
     private Integer strength;
-    @Column
+    @Column(nullable = false)
     private Integer dexterity;
     @Column(nullable = false)
     private Integer constitution;
-    @Column
+    @Column(nullable = false)
     private Integer intelligence;
-    @Column
+    @Column(nullable = false)
     private Integer wisdom;
-    @Column
+    @Column(nullable = false)
     private Integer charisma;
 
     public PlayerCharacter(){
+        this.strength = 0;
+        this.dexterity = 0;
+        this.constitution = 0;
+        this.intelligence = 0;
+        this.wisdom = 0;
+        this.charisma = 0;
     }
 
     public void addStrength(Integer strength) {

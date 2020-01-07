@@ -4,6 +4,8 @@ import org.mariuszf.dnd5e.characters.backend.playercharacter.database.PlayerChar
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PlayerCharacterService {
 
@@ -14,8 +16,11 @@ public class PlayerCharacterService {
         this.playerCharacterRepo = playerCharacterRepo;
     }
 
-//    public PlayerCharacterDTO createNewCharacter(){
-//
-//    }
+    public PlayerCharacter createNewCharacter(){
+        return playerCharacterRepo.save(new PlayerCharacter());
+    }
 
+    public List<PlayerCharacter> getAllPlayerCharacters() {
+        return playerCharacterRepo.findAll();
+    }
 }

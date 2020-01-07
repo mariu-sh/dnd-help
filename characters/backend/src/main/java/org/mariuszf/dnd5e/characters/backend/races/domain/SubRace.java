@@ -1,7 +1,6 @@
 package org.mariuszf.dnd5e.characters.backend.races.domain;
 
 import org.mariuszf.dnd5e.characters.backend.playercharacter.domain.PlayerCharacter;
-import org.mariuszf.dnd5e.characters.backend.races.web.SubRaceDTO;
 
 import java.util.function.Function;
 
@@ -17,11 +16,9 @@ public enum SubRace {
     FOREST_GNOME(SubRace::addForestGnomeStats),
     ROCK_GNOME(SubRace::addRockGnomeStats);
 
-    private final String name;
     private final Function<PlayerCharacter, PlayerCharacter> statsUpdater;
 
     SubRace(Function<PlayerCharacter, PlayerCharacter> statsUpdater) {
-        this.name = this.name().toLowerCase().replace("_","-");
         this.statsUpdater = statsUpdater;
     }
 
@@ -72,13 +69,5 @@ public enum SubRace {
     private static PlayerCharacter addRockGnomeStats(PlayerCharacter playerCharacter){
         playerCharacter.addConstitution(1);
         return playerCharacter;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public SubRaceDTO toDto(){
-        return new SubRaceDTO(this.getName());
     }
 }
