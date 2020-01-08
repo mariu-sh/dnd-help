@@ -3,10 +3,7 @@ package org.mariuszf.dnd5e.characters.backend.playercharacter.domain;
 import org.mariuszf.dnd5e.characters.backend.races.domain.Race;
 import org.mariuszf.dnd5e.characters.backend.races.domain.SubRace;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "playercharacters")
@@ -23,26 +20,11 @@ public class PlayerCharacter {
     @Column
     private SubRace subRace;
 
-    @Column(nullable = false)
-    private Integer strength;
-    @Column(nullable = false)
-    private Integer dexterity;
-    @Column(nullable = false)
-    private Integer constitution;
-    @Column(nullable = false)
-    private Integer intelligence;
-    @Column(nullable = false)
-    private Integer wisdom;
-    @Column(nullable = false)
-    private Integer charisma;
+    @Embedded
+    private Abilities abilities;
 
     public PlayerCharacter(){
-        this.strength = 0;
-        this.dexterity = 0;
-        this.constitution = 0;
-        this.intelligence = 0;
-        this.wisdom = 0;
-        this.charisma = 0;
+        this.abilities = new Abilities();
     }
 
     public void addStrength(Integer strength) {
@@ -81,27 +63,17 @@ public class PlayerCharacter {
         return name;
     }
 
-    public Integer getStrength() {
-        return strength;
-    }
+    public void setStrength(Integer strength){ this.abilities.setStrength(strength); }
+    public void setDexterity(Integer dexterity){ this.abilities.setDexterity(dexterity); }
+    public void setConstitution(Integer constitution){ this.abilities.setConstitution(constitution); }
+    public void setIntelligence(Integer intelligence){ this.abilities.setIntelligence(intelligence); }
+    public void setWisdom(Integer wisdom){ this.abilities.setWisdom(wisdom); }
+    public void setCharisma(Integer charisma){ this.abilities.setCharisma(charisma); }
 
-    public Integer getDexterity() {
-        return dexterity;
-    }
-
-    public Integer getConstitution() {
-        return constitution;
-    }
-
-    public Integer getIntelligence() {
-        return intelligence;
-    }
-
-    public Integer getWisdom() {
-        return wisdom;
-    }
-
-    public Integer getCharisma() {
-        return charisma;
-    }
+    public Integer getStrength() { return this.abilities.getStrength(); }
+    public Integer getDexterity() { return this.abilities.getDexterity(); }
+    public Integer getConstitution() { return this.abilities.getConstitution(); }
+    public Integer getIntelligence() { return this.abilities.getIntelligence(); }
+    public Integer getWisdom() { return this.abilities.getWisdom(); }
+    public Integer getCharisma() { return this.abilities.getCharisma(); }
 }
